@@ -36,3 +36,22 @@ curl -X GET "http://localhost:8080/private"
 curl -X GET -H "Authorization: Bearer dummy" "http://localhost:8080/private"
 {"timestamp":1516242871156,"status":500,"error":"Internal Server Error","exception":"io.jsonwebtoken.MalformedJwtException","message":"JWT strings must contain exactly 2 period characters. Found: 0","path":"/private"}
 ```
+
+
+### 動作前提条件
+以下のMySQL DataBaseが作成されていることを前提としています。
+
+schema:app_db
+```DDL
+CREATE DATABASE `app_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */
+```
+table:peoples
+```DDL
+CREATE TABLE `peoples` (
+  `login_name` text NOT NULL,
+  `people_id` int NOT NULL AUTO_INCREMENT,
+  `password` text NOT NULL,
+  PRIMARY KEY (`people_id`),
+  UNIQUE KEY `peoples_login_name_uindex` (`login_name`(100))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='アプリケーション利用者情報を格納するテーブル'
+```
