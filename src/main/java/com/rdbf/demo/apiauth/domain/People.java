@@ -11,6 +11,12 @@ public class People {
         this.password = password;
     }
 
+    public People(String loginId, String password) {
+        this.peopleId = null;
+        this.loginId = loginId;
+        this.password = password;
+    }
+
     public String getPeopleId() {
         return peopleId;
     }

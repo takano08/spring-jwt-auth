@@ -12,5 +12,5 @@ public interface PeopleRepository {
     People findByLoginId(String loginId);
 
     @Insert("INSERT INTO peoples(login_id,password) VALUES (#{loginId},#{password})")
-    Void createAccount(String loginId,String password);
+    void createAccount(People people);
 }

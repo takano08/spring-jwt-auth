@@ -22,7 +22,8 @@ public class SampleService  {
 
     public void createAccount(String loginId,String password){
 
-        peopleRepository.createAccount(loginId,password);
+        People people = new People(loginId,password);
+        peopleRepository.createAccount(people);
 
     }
 
