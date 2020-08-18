@@ -1,4 +1,4 @@
-package com.nyasba.jwt.apiauth.controller.form;
+package com.rdbf.demo.apiauth.controller.form;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 

@@ -1,4 +1,4 @@
-package com.nyasba.jwt.apiauth.support;
+package com.rdbf.demo.apiauth.support;
 
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,10 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.nyasba.jwt.apiauth.support.SecurityConstants.HEADER_STRING;
-import static com.nyasba.jwt.apiauth.support.SecurityConstants.SECRET;
-import static com.nyasba.jwt.apiauth.support.SecurityConstants.TOKEN_PREFIX;
-
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     private AuthenticationManager authenticationManager;
 
@@ -28,9 +24,9 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest req,
                                     HttpServletResponse res,
                                     FilterChain chain) throws IOException, ServletException {
-        String header = req.getHeader(HEADER_STRING);
+        String header = req.getHeader(SecurityConstants.HEADER_STRING);
 
-        if (header == null || !header.startsWith(TOKEN_PREFIX)) {
+        if (header == null || !header.startsWith(SecurityConstants.TOKEN_PREFIX)) {
             chain.doFilter(req, res);
             return;
         }
@@ -43,12 +39,12 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-        String token = request.getHeader(HEADER_STRING);
+        String token = request.getHeader(SecurityConstants.HEADER_STRING);
         if (token != null) {
             // parse the token.
             String user = Jwts.parser()
-                    .setSigningKey(SECRET.getBytes())
-                    .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
+                    .setSigningKey(SecurityConstants.SECRET.getBytes())
+                    .parseClaimsJws(token.replace(SecurityConstants.TOKEN_PREFIX, ""))
                     .getBody()
                     .getSubject();
 

@@ -1,4 +1,4 @@
-package com.nyasba.jwt.apiauth.service;
+package com.rdbf.demo.apiauth.service;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +15,7 @@ import java.util.Set;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private static List<String> usernameList = Arrays.asList("test", "admin");
-    private static String ENCRYPTED_PASSWORD = "$2a$10$5DF/j5hHnbeHyh85/0Bdzu1HV1KyJKZRt2GhpsfzQ8387A/9duSuq"; // "password"を暗号化した値
+    private static String ENCRYPTED_PASSWORD = "$2a$10$acaFdwAlGDD50vzqgBYvo.t68yzfQREKSnN1OnKkEw4Y06LEOqB5a"; // "password"を暗号化した値
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

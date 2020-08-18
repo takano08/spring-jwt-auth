@@ -1,7 +1,7 @@
-package com.nyasba.jwt.apiauth.support;
+package com.rdbf.demo.apiauth.support;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nyasba.jwt.apiauth.controller.form.UserForm;
+import com.rdbf.demo.apiauth.controller.form.UserForm;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static com.nyasba.jwt.apiauth.support.SecurityConstants.*;
-
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JWTAuthenticationFilter.class);
@@ -37,11 +35,11 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 
         // ログイン用のpathを変更する
-        setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher(LOGIN_URL, "POST"));
+        setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher(SecurityConstants.LOGIN_URL, "POST"));
 
         // ログイン用のID/PWのパラメータ名を変更する
-        setUsernameParameter(LOGIN_ID);
-        setPasswordParameter(PASSWORD);
+        setUsernameParameter(SecurityConstants.LOGIN_ID);
+        setPasswordParameter(SecurityConstants.PASSWORD);
 
     }
 
@@ -75,10 +73,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         // loginIdからtokenを設定してヘッダにセットする
         String token = Jwts.builder()
                 .setSubject(((User)auth.getPrincipal()).getUsername()) // usernameだけを設定する
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(SignatureAlgorithm.HS512, SECRET.getBytes())
+                .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
+                .signWith(SignatureAlgorithm.HS512, SecurityConstants.SECRET.getBytes())
                 .compact();
-        res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
+        res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
 
         // ここでレスポンスを組み立てると個別のパラメータを返せるがFilterの責務の範囲内で実施しなければならない
         // auth.getPrincipal()で取得できるUserDetailsは自分で作ったEntityクラスにもできるのでカスタム属性は追加可能

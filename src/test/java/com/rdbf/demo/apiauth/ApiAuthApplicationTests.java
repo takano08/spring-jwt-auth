@@ -1,4 +1,4 @@
-package com.nyasba.jwt.apiauth;
+package com.rdbf.demo.apiauth;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -12,11 +12,10 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static com.nyasba.jwt.apiauth.support.SecurityConstants.LOGIN_URL;
-import static com.nyasba.jwt.apiauth.support.SecurityConstants.SIGNUP_URL;
+import static com.rdbf.demo.apiauth.support.SecurityConstants.LOGIN_URL;
+import static com.rdbf.demo.apiauth.support.SecurityConstants.SIGNUP_URL;
 import static io.restassured.RestAssured.given;
 
 @RunWith(SpringRunner.class)
