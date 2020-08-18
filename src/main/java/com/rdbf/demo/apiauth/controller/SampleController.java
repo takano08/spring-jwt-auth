@@ -1,6 +1,8 @@
 package com.rdbf.demo.apiauth.controller;
 
 import com.rdbf.demo.apiauth.controller.form.UserForm;
+import com.rdbf.demo.apiauth.repository.PeopleRepository;
+import com.rdbf.demo.apiauth.service.SampleService;
 import com.rdbf.demo.apiauth.support.SecurityConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import com.rdbf.demo.apiauth.service.SampleService;
 
 import javax.validation.Valid;
 
@@ -19,9 +22,19 @@ import javax.validation.Valid;
 public class SampleController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SampleController.class);
+    private final SampleService sampleService;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+
+    @Autowired
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+    public SampleController(SampleService sampleService) {
+        this.sampleService = sampleService;
+    }
+
+
 
     @GetMapping(value = "/public")
     public String publicApi() {
@@ -39,6 +52,7 @@ public class SampleController {
         return "this is private for " + username;
     }
 
+
     @PostMapping(value = SecurityConstants.SIGNUP_URL)
     public void signup(@Valid @RequestBody UserForm user) {
 
@@ -47,6 +61,7 @@ public class SampleController {
 
         // DBに保存する処理を本来は書く
         LOGGER.info("signup :" + user.toString());
+        sampleService.createAccount(user.getLoginId(),user.getPassword());
     }
 
 }
