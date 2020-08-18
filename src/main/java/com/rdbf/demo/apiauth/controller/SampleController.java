@@ -1,7 +1,7 @@
 package com.rdbf.demo.apiauth.controller;
 
 import com.rdbf.demo.apiauth.controller.form.UserForm;
-import com.rdbf.demo.apiauth.repository.PeopleRepository;
+import com.rdbf.demo.apiauth.domain.People;
 import com.rdbf.demo.apiauth.service.SampleService;
 import com.rdbf.demo.apiauth.support.SecurityConstants;
 import org.slf4j.Logger;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.rdbf.demo.apiauth.service.SampleService;
 
 import javax.validation.Valid;
 
@@ -42,14 +41,18 @@ public class SampleController {
     }
 
     @GetMapping(value = "/private")
-    public String privateApi() {
+    public People privateApi() {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         // JWTAuthenticationFilter#successfulAuthenticationで設定したusernameを取り出す
         String username = (String) (authentication.getPrincipal());
 
-        return "this is private for " + username;
+       People loginUser = sampleService.getUser(username);
+
+       loginUser.setPassword("***");
+
+        return loginUser;
     }
 
 
