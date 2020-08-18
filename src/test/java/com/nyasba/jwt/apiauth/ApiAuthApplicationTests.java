@@ -37,7 +37,7 @@ public class ApiAuthApplicationTests {
     public void ユーザ登録してPWを暗号化する() throws JSONException {
         JSONObject jsonObject = new JSONObject()
                 .put("loginId", "test")
-                .put("pass", "password");
+                .put("password", "password");
 
         given().body(jsonObject.toString())
                 .contentType(ContentType.JSON)
@@ -51,7 +51,7 @@ public class ApiAuthApplicationTests {
 
 		JSONObject jsonObject = new JSONObject()
 				.put("loginId", "test")
-				.put("pass", "password");
+				.put("password", "password");
 
 		given().body(jsonObject.toString())
 				.contentType(ContentType.JSON)
@@ -66,7 +66,7 @@ public class ApiAuthApplicationTests {
 
         JSONObject jsonObject = new JSONObject()
                 .put("loginId", "test")
-                .put("pass", "notvalid");
+                .put("password", "notValid");
 
         given().body(jsonObject.toString())
                 .contentType(ContentType.JSON)

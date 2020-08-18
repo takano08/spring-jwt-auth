@@ -4,25 +4,25 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class UserForm {
     private String loginId;
-    private String pass;
+    private String password;
 
     public String getLoginId() {
         return loginId;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
     public void encrypt(PasswordEncoder encoder){
-        this.pass = encoder.encode(pass);
+        this.password = encoder.encode(password);
     }
 
     @Override
     public String toString() {
         return "UserForm{" +
                 "loginId='" + loginId + '\'' +
-                ", pass='" + pass + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
