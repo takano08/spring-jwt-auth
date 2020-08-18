@@ -36,7 +36,7 @@ public class ApiAuthApplicationTests {
 	@Test
     public void ユーザ登録してPWを暗号化する() throws JSONException {
         JSONObject jsonObject = new JSONObject()
-                .put("loginId", "nyasba")
+                .put("loginId", "test")
                 .put("pass", "password");
 
         given().body(jsonObject.toString())
@@ -50,7 +50,7 @@ public class ApiAuthApplicationTests {
 	public void 認証成功してトークンが取れること() throws JSONException {
 
 		JSONObject jsonObject = new JSONObject()
-				.put("loginId", "nyasba")
+				.put("loginId", "test")
 				.put("pass", "password");
 
 		given().body(jsonObject.toString())
@@ -58,14 +58,14 @@ public class ApiAuthApplicationTests {
 				.post(LOGIN_URL)
 				.then()
 				.statusCode(HttpStatus.OK.value())
-				.header("Authorization", Matchers.startsWith("Bearer "));
+				.header("Authorization", Matchers.startsWith("Bearer"));
 	}
 
     @Test
     public void 認証失敗してトークンが取れないこと() throws JSONException {
 
         JSONObject jsonObject = new JSONObject()
-                .put("loginId", "nyasba")
+                .put("loginId", "test")
                 .put("pass", "notvalid");
 
         given().body(jsonObject.toString())
