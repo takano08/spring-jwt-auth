@@ -1,7 +1,8 @@
-package com.nyasba.jwt.apiauth;
+package com.rdbf.demo.apiauth;
 
-import com.nyasba.jwt.apiauth.support.JWTAuthenticationFilter;
-import com.nyasba.jwt.apiauth.support.JWTAuthorizationFilter;
+import com.rdbf.demo.apiauth.support.JWTAuthenticationFilter;
+import com.rdbf.demo.apiauth.support.JWTAuthorizationFilter;
+import com.rdbf.demo.apiauth.support.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import static com.nyasba.jwt.apiauth.support.SecurityConstants.LOGIN_URL;
-import static com.nyasba.jwt.apiauth.support.SecurityConstants.SIGNUP_URL;
 
 @Configuration
 @EnableWebSecurity
@@ -28,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .cors()
                 .and().authorizeRequests()
-                .antMatchers("/public", SIGNUP_URL, LOGIN_URL).permitAll()
+                .antMatchers("/public", SecurityConstants.SIGNUP_URL, SecurityConstants.LOGIN_URL).permitAll()
                 .anyRequest().authenticated()
                 .and().logout()
                 .and().csrf().disable()

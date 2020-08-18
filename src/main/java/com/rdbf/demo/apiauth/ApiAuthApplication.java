@@ -1,4 +1,4 @@
-package com.nyasba.jwt.apiauth;
+package com.rdbf.demo.apiauth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
