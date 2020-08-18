@@ -27,4 +27,9 @@ public class SampleService  {
 
     }
 
+    public People getUser(String loginId){
+
+        return peopleRepository.findByLoginId(loginId);
+    }
+
 }
