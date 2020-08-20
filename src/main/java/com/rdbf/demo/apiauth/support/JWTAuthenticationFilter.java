@@ -83,7 +83,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 "{\"token\":\"" + token + "\"}"
         );
 
-        // ここでレスポンスを組み立てると個別のパラメータを返せるがFilterの責務の範囲内で実施しなければならない
         // auth.getPrincipal()で取得できるUserDetailsは自分で作ったEntityクラスにもできるのでカスタム属性は追加可能
     }
 
