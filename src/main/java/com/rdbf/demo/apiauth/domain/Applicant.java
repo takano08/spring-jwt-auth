@@ -1,18 +1,18 @@
 package com.rdbf.demo.apiauth.domain;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Applicant {
     private Integer applicantId;
     private String occupation;
     private String applicantName;
     private String applicantNameRuby;
-    private Date birthDay;
+    private LocalDateTime birthDay;
     private String gender;
     private String eMail;
     private String phoneNumber;
     private String desc;
 
-    public Applicant(Integer applicantId, String occupation, String applicantName, String applicantNameRuby, Date birthDay, String gender, String eMail, String phoneNumber, String desc) {
+    public Applicant(Integer applicantId, String occupation, String applicantName, String applicantNameRuby, LocalDateTime birthDay, String gender, String eMail, String phoneNumber, String desc) {
         this.applicantId = applicantId;
         this.occupation = occupation;
         this.applicantName = applicantName;
@@ -22,6 +22,14 @@ public class Applicant {
         this.eMail = eMail;
         this.phoneNumber = phoneNumber;
         this.desc = desc;
+    }
+
+    public Applicant() {
+    }
+
+    @Override
+    public String toString() {
+        return "データの中身"+this.applicantId+","+this.occupation+","+this.applicantName+","+this.applicantNameRuby+","+this.birthDay+","+this.gender+","+this.eMail+","+this.phoneNumber+","+this.desc;
     }
 
     public Integer getApplicantId() {
@@ -56,11 +64,11 @@ public class Applicant {
         this.applicantNameRuby = applicantNameRuby;
     }
 
-    public Date getBirthDay() {
+    public LocalDateTime getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(LocalDateTime birthDay) {
         this.birthDay = birthDay;
     }
 
@@ -72,11 +80,11 @@ public class Applicant {
         this.gender = gender;
     }
 
-    public String getEmail() {
+    public String geteMail() {
         return eMail;
     }
 
-    public void setEmail(String eMail) {
+    public void seteMail(String eMail) {
         this.eMail = eMail;
     }
 
