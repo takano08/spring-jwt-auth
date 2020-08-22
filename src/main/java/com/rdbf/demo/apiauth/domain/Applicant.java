@@ -1,18 +1,22 @@
 package com.rdbf.demo.apiauth.domain;
-import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
 
 public class Applicant {
     private Integer applicantId;
     private String occupation;
     private String applicantName;
     private String applicantNameRuby;
-    private LocalDateTime birthDay;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date birthDay;
     private String gender;
     private String eMail;
     private String phoneNumber;
-    private String desc;
+    private String inquiry;
 
-    public Applicant(Integer applicantId, String occupation, String applicantName, String applicantNameRuby, LocalDateTime birthDay, String gender, String eMail, String phoneNumber, String desc) {
+    public Applicant(Integer applicantId, String occupation, String applicantName, String applicantNameRuby, Date birthDay, String gender, String eMail, String phoneNumber, String inquiry) {
         this.applicantId = applicantId;
         this.occupation = occupation;
         this.applicantName = applicantName;
@@ -21,7 +25,7 @@ public class Applicant {
         this.gender = gender;
         this.eMail = eMail;
         this.phoneNumber = phoneNumber;
-        this.desc = desc;
+        this.inquiry = inquiry;
     }
 
     public Applicant() {
@@ -29,7 +33,7 @@ public class Applicant {
 
     @Override
     public String toString() {
-        return "データの中身"+this.applicantId+","+this.occupation+","+this.applicantName+","+this.applicantNameRuby+","+this.birthDay+","+this.gender+","+this.eMail+","+this.phoneNumber+","+this.desc;
+        return "データの中身"+this.applicantId+","+this.occupation+","+this.applicantName+","+this.applicantNameRuby+","+this.birthDay+","+this.gender+","+this.eMail+","+this.phoneNumber+","+this.inquiry;
     }
 
     public Integer getApplicantId() {
@@ -64,11 +68,11 @@ public class Applicant {
         this.applicantNameRuby = applicantNameRuby;
     }
 
-    public LocalDateTime getBirthDay() {
+    public Date getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(LocalDateTime birthDay) {
+    public void setBirthDay(Date birthDay) {
         this.birthDay = birthDay;
     }
 
@@ -96,12 +100,12 @@ public class Applicant {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getInquiry() {
+        return inquiry;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setInquiry(String inquiry) {
+        this.inquiry = inquiry;
     }
 }
 
