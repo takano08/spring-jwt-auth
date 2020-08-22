@@ -27,10 +27,9 @@ public class ApplicantController {
 
 
 
-
     @PostMapping(value = "/applicant")
     public void createApplicant( @RequestBody
-    @DateTimeFormat(pattern = "yyyy-MM-DD@HH:MM:SS") Applicant creteApplicantData){
+    @DateTimeFormat(pattern = "yyyy-MM-DD") Applicant creteApplicantData){
 
         LOGGER.info("createApplicant::::::::::::::::::::::::::" + creteApplicantData.toString());
         applicantRepository.createApplicant(creteApplicantData);
