@@ -1,43 +1,69 @@
 package com.rdbf.demo.apiauth.domain;
+import java.util.Date;
 
 public class Article {
-    private String peopleId;
-    private String loginId;
-    private String password;
+    private Integer articleId;
+    private String title;
+    private Date createdDate;
+    private String tag;
+    private String body;
+    private String owner;
 
-    public Article(String peopleId, String loginId, String password) {
-        this.peopleId = peopleId;
-        this.loginId = loginId;
-        this.password = password;
+    public Article(Integer articleId, String title, Date createdDate, String tag, String body, String owner) {
+        this.articleId = articleId;
+        this.title = title;
+        this.createdDate = createdDate;
+        this.tag = tag;
+        this.body = body;
+        this.owner = owner;
     }
 
-    public Article(String loginId, String password) {
-        this.peopleId = null;
-        this.loginId = loginId;
-        this.password = password;
+    public Integer getArticleId() {
+        return articleId;
     }
 
-    public String getPeopleId() {
-        return peopleId;
+    public void setArticleId(Integer articleId) {
+        this.articleId = articleId;
     }
 
-    public void setPeopleId(String peopleId) {
-        this.peopleId = peopleId;
+    public String getTitle() {
+        return title;
     }
 
-    public String getLoginId() {
-        return loginId;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setLoginId(String loginId) {
-        this.loginId = loginId;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public String getPassword() {
-        return password;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 }
+
