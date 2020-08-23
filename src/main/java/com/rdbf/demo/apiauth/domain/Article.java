@@ -1,9 +1,14 @@
 package com.rdbf.demo.apiauth.domain;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
+
 
 public class Article {
     private Integer articleId;
     private String title;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date createdDate;
     private String tag;
     private String body;
@@ -16,6 +21,11 @@ public class Article {
         this.tag = tag;
         this.body = body;
         this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return "データの中身"+this.articleId+","+this.title+","+this.createdDate+","+this.tag+","+this.body+","+this.owner;
     }
 
     public Integer getArticleId() {
