@@ -41,14 +41,18 @@ public class ArticleController {
 
     }
 
-    @PutMapping(value = "/article")
-    public void updateArticle( @RequestBody Article updateArticleData) {
+    @PostMapping(value = "/update-article")
+    public void updateArticle( @RequestBody @DateTimeFormat(pattern = "yyyy-MM-DD") Article updateArticleData) {
 
 
         articleRepository.updateArticle(updateArticleData);
 
     }
 
+    @DeleteMapping(value="/article/{id}")
+    public void deleteArticle( @PathVariable Integer id) {
+        articleRepository.deleteByArticleId(id);
+    }
 
 
 
