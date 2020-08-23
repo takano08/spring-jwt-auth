@@ -23,6 +23,9 @@ public class Article {
         this.owner = owner;
     }
 
+    public Article() {
+    }
+
     @Override
     public String toString() {
         return "データの中身"+this.articleId+","+this.title+","+this.createdDate+","+this.tag+","+this.body+","+this.owner;
