@@ -11,7 +11,7 @@ public interface ArticleRepository {
     @Select("SELECT article_id,title,created_date,tag,body,owner FROM articles WHERE article_id = #{articleId}")
     Article findByArticleId(Integer articleId);
 
-    @Select("SELECT article_id,title,created_date,tag,body,owner FROM articles")
+    @Select("SELECT article_id,title,created_date,tag,body,owner FROM articles ORDER BY article_id DESC")
     List<Article> findAll();
 
     @Insert("INSERT INTO articles(article_id,title,created_date,tag,body,owner) VALUES (#{articleId},#{title},#{createdDate},#{tag},#{body},#{owner})")
